@@ -1,6 +1,5 @@
 using WpfDemo.Models;
 using WpfDemo.ViewModels;
-using Wpf.Ui.Controls;
 using Xunit;
 
 namespace WpfDemo.Tests.ViewModels;
@@ -8,47 +7,53 @@ namespace WpfDemo.Tests.ViewModels;
 public class MainWindowViewModelTests
 {
     [Fact]
-    public void Constructor_ExposesMainAndFooterNavigationItems()
+    public void Constructor_BuildsOrderedNavigationCatalog()
     {
         var viewModel = new MainWindowViewModel();
 
-        Assert.Collection(
-            viewModel.NavigationItems,
-            item =>
-            {
-                Assert.Equal(NavigationPageKeys.Home, item.Key);
-                Assert.Equal("主页", item.Title);
-                Assert.Equal(SymbolRegular.Home24, item.IconSymbol);
-                Assert.Equal(NavigationItemPlacement.Main, item.Placement);
-            },
-            item =>
-            {
-                Assert.Equal(NavigationPageKeys.Settings, item.Key);
-                Assert.Equal("系统设置", item.Title);
-                Assert.Equal(SymbolRegular.Settings24, item.IconSymbol);
-                Assert.Equal(NavigationItemPlacement.Footer, item.Placement);
-            });
+        Assert.Equal(
+            [
+                NavigationPageKeys.Home,
+                NavigationPageKeys.Buttons,
+                NavigationPageKeys.InputControls,
+                NavigationPageKeys.DataDisplay,
+                NavigationPageKeys.LayoutContainers,
+                NavigationPageKeys.Dialogs,
+                NavigationPageKeys.AnimationEffects,
+                NavigationPageKeys.Themes,
+                NavigationPageKeys.Icons,
+                NavigationPageKeys.DemoSectionHeader,
+                NavigationPageKeys.FormExamples,
+                NavigationPageKeys.DataManagement,
+                NavigationPageKeys.ChartExamples,
+                NavigationPageKeys.FileBrowser,
+                NavigationPageKeys.Settings
+            ],
+            viewModel.NavigationItems.Select(item => item.Key).ToArray());
     }
 
     [Fact]
-    public void Constructor_SeparatesMainAndFooterCollections()
+    public void Constructor_SeparatesClickableItemsFromSectionHeaders()
     {
         var viewModel = new MainWindowViewModel();
 
-        Assert.Single(viewModel.MainNavigationItems);
-        Assert.Single(viewModel.FooterNavigationItems);
-        Assert.Equal(NavigationPageKeys.Home, viewModel.MainNavigationItems[0].Key);
+        Assert.Equal(14, viewModel.ClickableNavigationItems.Count);
+        Assert.Contains(viewModel.MainNavigationItems, item => item.Key == NavigationPageKeys.DemoSectionHeader && item.IsSectionHeader);
+        Assert.DoesNotContain(viewModel.ClickableNavigationItems, item => item.Key == NavigationPageKeys.DemoSectionHeader);
         Assert.Equal(NavigationPageKeys.Settings, viewModel.FooterNavigationItems[0].Key);
         Assert.Equal(NavigationPageKeys.Home, viewModel.DefaultNavigationItem.Key);
     }
 
-    [Fact]
-    public void GetBreadcrumbItems_ReturnsChineseShellLabels()
+    [Theory]
+    [InlineData(NavigationPageKeys.Home, "主页")]
+    [InlineData(NavigationPageKeys.Buttons, "按钮与命令")]
+    [InlineData(NavigationPageKeys.FormExamples, "表单示例")]
+    [InlineData(NavigationPageKeys.Settings, "系统设置")]
+    public void GetBreadcrumbItems_ReturnsChineseShellLabels(string pageKey, string expectedTitle)
     {
         var viewModel = new MainWindowViewModel();
 
-        Assert.Equal(new[] { "主页" }, viewModel.GetBreadcrumbItems(NavigationPageKeys.Home));
-        Assert.Equal(new[] { "系统设置" }, viewModel.GetBreadcrumbItems(NavigationPageKeys.Settings));
+        Assert.Equal([expectedTitle], viewModel.GetBreadcrumbItems(pageKey));
     }
 
     [Fact]

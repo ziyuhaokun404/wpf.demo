@@ -99,16 +99,22 @@
                 x:Name="RootNavigation"
                 Grid.Column="0"
                 CompactPaneLength="48"
-                OpenPaneLength="240"
+                OpenPaneLength="260"
                 PaneDisplayMode="Left"
                 PaneTitle="演示导航">
                 <ui:NavigationView.PaneHeader>
-                    <TextBlock
-                        Margin="16,12,16,8"
-                        FontSize="12"
-                        FontWeight="SemiBold"
-                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                        Text="工作区" />
+                    <StackPanel Margin="16,12,16,8">
+                        <TextBlock
+                            FontSize="12"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="工作区" />
+                        <TextBlock
+                            Margin="0,4,0,0"
+                            FontSize="11"
+                            Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                            Text="Fluent 组件目录" />
+                    </StackPanel>
                 </ui:NavigationView.PaneHeader>
             </ui:NavigationView>
 
