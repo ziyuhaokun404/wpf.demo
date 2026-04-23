@@ -1,0 +1,58 @@
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+
+# IDE state
+.vs/
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.rsuser
+*.sln.docstates
+*.userprefs
+*.sln.iml
+
+# Test results and coverage
+[Tt]est[Rr]esult*/
+TestResults/
+*.coverage
+*.coveragexml
+coverage*.xml
+coverage*.json
+coverage.xml
+coverage.json
+
+# NuGet and packages
+packages/
+.nuget/
+*.nupkg
+*.snupkg
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Python/script cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store

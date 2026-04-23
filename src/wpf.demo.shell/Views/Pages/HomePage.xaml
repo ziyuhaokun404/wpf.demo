@@ -1,0 +1,19 @@
+<Page x:Class="WpfDemo.Views.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+      Background="Transparent">
+    <Grid Margin="24">
+        <ui:Card Padding="24">
+            <StackPanel>
+                <TextBlock FontSize="30"
+                           FontWeight="SemiBold"
+                           Text="{Binding Title}" />
+                <TextBlock Margin="0,12,0,0"
+                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                           TextWrapping="Wrap"
+                           Text="{Binding Description}" />
+            </StackPanel>
+        </ui:Card>
+    </Grid>
+</Page>
