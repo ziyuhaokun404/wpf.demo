@@ -31,7 +31,7 @@ public class HomeViewModelTests
                 NavigationPageKeys.Buttons,
                 NavigationPageKeys.InputControls,
                 NavigationPageKeys.DataDisplay,
-                NavigationPageKeys.Dialogs
+                NavigationPageKeys.LayoutContainers
             ],
             viewModel.QuickActions.Select(item => item.TargetPageKey).ToArray());
     }

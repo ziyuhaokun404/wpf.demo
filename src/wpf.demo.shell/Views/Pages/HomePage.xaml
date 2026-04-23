@@ -4,155 +4,287 @@
       xmlns:controls="clr-namespace:WpfDemo.Views.Controls"
       xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
       Background="Transparent">
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="24">
-            <Grid Margin="0,0,0,20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="320" />
-                </Grid.ColumnDefinitions>
+    <ScrollViewer x:Name="RootScrollViewer" VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="24,12,24,24">
+            <Border Padding="0"
+                    CornerRadius="24">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="{DynamicResource HeroGradientStartColor}" />
+                        <GradientStop Offset="0.58" Color="{DynamicResource HeroGradientMiddleColor}" />
+                        <GradientStop Offset="1" Color="{DynamicResource HeroGradientEndColor}" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid MinHeight="238" ClipToBounds="True">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.05*" />
+                        <ColumnDefinition Width="0.95*" />
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel>
-                    <TextBlock FontSize="34"
-                               FontWeight="SemiBold"
-                               Text="{Binding Title}" />
-                    <TextBlock Margin="0,10,0,0"
-                               Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                               Text="{Binding Description}"
-                               TextWrapping="Wrap" />
-                </StackPanel>
+                    <Ellipse Width="220"
+                             Height="220"
+                             Margin="-88,-112,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             Fill="#14FFFFFF" />
+                    <Ellipse Width="160"
+                             Height="160"
+                             Margin="0,-64,220,0"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Top"
+                             Fill="#10FFFFFF" />
+                    <Ellipse Width="124"
+                             Height="124"
+                             Margin="0,0,-48,18"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Bottom"
+                             Fill="#12FFFFFF" />
 
-                <ui:TextBox Grid.Column="1"
-                            Height="40"
-                            VerticalAlignment="Center"
-                            PlaceholderText="{Binding SearchPlaceholder}" />
-            </Grid>
+                    <StackPanel Margin="32,28,24,28">
+                        <Border Padding="12,5"
+                                HorizontalAlignment="Left"
+                                Background="{DynamicResource HeroBadgeBackgroundBrush}"
+                                BorderBrush="{DynamicResource HeroBadgeBorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="12">
+                            <StackPanel Orientation="Horizontal">
+                                <ui:SymbolIcon FontSize="14"
+                                               Foreground="White"
+                                               Symbol="Sparkle24" />
+                                <TextBlock Margin="6,0,0,0"
+                                           FontSize="12"
+                                           FontWeight="SemiBold"
+                                           Foreground="White"
+                                           Text="Dashboard / NavigationView" />
+                            </StackPanel>
+                        </Border>
 
-            <ItemsControl ItemsSource="{Binding FeatureCards}">
+                        <TextBlock Margin="0,18,0,0"
+                                   FontSize="48"
+                                   FontWeight="Bold"
+                                   Foreground="White"
+                                   Text="欢迎使用 WPF Demo" />
+
+                        <TextBlock Margin="0,8,0,0"
+                                   MaxWidth="460"
+                                   FontSize="25"
+                                   Foreground="{DynamicResource HeroSubtitleBrush}"
+                                   Text="Fluent UI 组件展示与导航系统" 
+                                   TextWrapping="Wrap" />
+
+                        <StackPanel Margin="0,28,0,0"
+                                    Orientation="Horizontal">
+                            <ui:Button Padding="22,12"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource HeroPrimaryButtonForegroundBrush}"
+                                       Background="{DynamicResource HeroPrimaryButtonBackgroundBrush}"
+                                       BorderBrush="{DynamicResource HeroPrimaryButtonBackgroundBrush}"
+                                       Click="HeroBrowseComponents_Click"
+                                       Content="开始浏览组件"
+                                       Icon="{ui:SymbolIcon Rocket24}" />
+                            <ui:Button Margin="14,0,0,0"
+                                       Padding="22,12"
+                                       Appearance="Transparent"
+                                       Foreground="White"
+                                       Background="{DynamicResource HeroSecondaryButtonBackgroundBrush}"
+                                       BorderBrush="{DynamicResource HeroSecondaryButtonBorderBrush}"
+                                       BorderThickness="1"
+                                       Click="HeroScrollToUpdates_Click"
+                                       Content="查看更新日志"
+                                       Icon="{ui:SymbolIcon DocumentBulletList24}" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Canvas Grid.Column="1"
+                            Margin="28,24,28,24">
+                        <Border Width="126"
+                                Height="88"
+                                Canvas.Left="148"
+                                Canvas.Top="8"
+                                Background="#34FFFFFF"
+                                BorderBrush="#2EFFFFFF"
+                                BorderThickness="1"
+                                CornerRadius="18"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-10" />
+                                    <SkewTransform AngleX="-8" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <ui:SymbolIcon HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="42"
+                                           Foreground="#E8FFFFFF"
+                                           Symbol="GridDots24" />
+                        </Border>
+
+                        <Border Width="132"
+                                Height="88"
+                                Canvas.Left="276"
+                                Canvas.Top="18"
+                                Background="#28FFFFFF"
+                                BorderBrush="#26FFFFFF"
+                                BorderThickness="1"
+                                CornerRadius="18"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-8" />
+                                    <SkewTransform AngleX="-8" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <ui:SymbolIcon HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="42"
+                                           Foreground="#E8FFFFFF"
+                                           Symbol="TextFont24" />
+                        </Border>
+
+                        <Border Width="148"
+                                Height="94"
+                                Canvas.Left="108"
+                                Canvas.Top="98"
+                                Background="#18FFFFFF"
+                                BorderBrush="#24FFFFFF"
+                                BorderThickness="1"
+                                CornerRadius="20"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="8" />
+                                    <SkewTransform AngleX="-10" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <ui:SymbolIcon HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="46"
+                                           Foreground="#E8FFFFFF"
+                                           Symbol="DataPie24" />
+                        </Border>
+
+                        <Border Width="144"
+                                Height="96"
+                                Canvas.Left="238"
+                                Canvas.Top="108"
+                                Background="#20FFFFFF"
+                                BorderBrush="#24FFFFFF"
+                                BorderThickness="1"
+                                CornerRadius="20"
+                                RenderTransformOrigin="0.5,0.5">
+                            <Border.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-6" />
+                                    <SkewTransform AngleX="-8" />
+                                </TransformGroup>
+                            </Border.RenderTransform>
+                            <ui:SymbolIcon HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="46"
+                                           Foreground="#E8FFFFFF"
+                                           Symbol="Code24" />
+                        </Border>
+                    </Canvas>
+                </Grid>
+            </Border>
+
+            <ItemsControl Margin="-9,18,-9,0" ItemsSource="{Binding QuickActions}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="3" />
+                        <UniformGrid Columns="4" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <controls:FeatureCardControl Margin="0,0,16,0" />
+                        <controls:QuickActionCardControl Margin="9,0,9,0"
+                                                         Loaded="QuickActionCard_Loaded" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
-            <Grid Margin="0,24,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1.2*" />
-                    <ColumnDefinition Width="0.8*" />
-                </Grid.ColumnDefinitions>
+            <ui:Card x:Name="VersionUpdatesCard" Margin="0,18,0,0" Padding="22">
+                <StackPanel>
+                    <DockPanel LastChildFill="False">
+                        <StackPanel Orientation="Horizontal"
+                                    DockPanel.Dock="Left"
+                                    VerticalAlignment="Center">
+                            <ui:SymbolIcon VerticalAlignment="Center"
+                                           FontSize="18"
+                                           Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                           Symbol="DocumentBulletList24" />
+                            <TextBlock Margin="10,0,0,0"
+                                       VerticalAlignment="Center"
+                                       FontSize="18"
+                                       FontWeight="SemiBold"
+                                       Text="版本更新" />
+                        </StackPanel>
 
-                <ui:Card Grid.Column="0" Padding="20">
-                    <StackPanel>
-                        <TextBlock FontSize="22"
-                                   FontWeight="SemiBold"
-                                   Text="快捷入口" />
-                        <ItemsControl Margin="0,16,0,0" ItemsSource="{Binding QuickActions}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <controls:QuickActionCardControl Margin="0,0,0,12"
-                                                                     Loaded="QuickActionCard_Loaded" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </ui:Card>
+                        <ui:Button DockPanel.Dock="Right"
+                                   Padding="12,8"
+                                   Appearance="Secondary"
+                                   Click="HeroScrollToUpdates_Click"
+                                   Content="查看完整日志" />
+                    </DockPanel>
 
-                <ui:Card Grid.Column="1"
-                         Margin="20,0,0,0"
-                         Padding="20">
-                    <StackPanel>
-                        <TextBlock FontSize="22"
-                                   FontWeight="SemiBold"
-                                   Text="主题模式" />
-                        <ItemsControl Margin="0,16,0,0" ItemsSource="{Binding ThemeOptions}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <controls:ThemeOptionCardControl Margin="0,0,0,12"
-                                                                     Loaded="ThemeOptionCard_Loaded" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </ui:Card>
-            </Grid>
+                    <ItemsControl Margin="-9,20,-9,0" ItemsSource="{Binding ReleaseNotes}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="3" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="9,0,9,0"
+                                        Padding="16"
+                                        Background="{DynamicResource ControlFillColorSecondaryBrush}"
+                                        BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="18">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
 
-            <Grid Margin="0,24,0,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.9*" />
-                    <ColumnDefinition Width="1.1*" />
-                </Grid.ColumnDefinitions>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Ellipse Width="14"
+                                                     Height="14"
+                                                     Fill="{Binding AccentColor}" />
+                                            <Border Grid.Column="1"
+                                                    Height="2"
+                                                    Margin="12,6,0,0"
+                                                    Background="{DynamicResource DividerStrokeColorDefaultBrush}" />
+                                        </Grid>
 
-                <ui:Card Grid.Column="0" Padding="20">
-                    <StackPanel>
-                        <TextBlock FontSize="22"
-                                   FontWeight="SemiBold"
-                                   Text="版本时间线" />
-                        <ItemsControl Margin="0,16,0,0" ItemsSource="{Binding ReleaseNotes}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid Margin="0,0,0,12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Ellipse Width="10"
-                                                 Height="10"
-                                                 Margin="0,6,12,0"
-                                                 VerticalAlignment="Top"
-                                                 Fill="{DynamicResource SystemAccentColorPrimaryBrush}" />
-
-                                        <StackPanel Grid.Column="1">
-                                            <TextBlock FontWeight="SemiBold" Text="{Binding Version}" />
-                                            <TextBlock Margin="0,4,0,0"
-                                                       Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                                       Text="{Binding Summary}"
-                                                       TextWrapping="Wrap" />
-                                        </StackPanel>
-
-                                        <TextBlock Grid.Column="2"
-                                                   Margin="12,0,0,0"
-                                                   Foreground="{DynamicResource TextFillColorTertiaryBrush}"
+                                        <TextBlock Grid.Row="1"
+                                                   Margin="0,16,0,0"
+                                                   FontSize="20"
+                                                   FontWeight="SemiBold"
+                                                   Text="{Binding Version}" />
+                                        <TextBlock Grid.Row="2"
+                                                   Margin="0,6,0,0"
+                                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
                                                    Text="{Binding DateLabel}" />
+                                        <TextBlock Grid.Row="3"
+                                                   Margin="0,10,12,0"
+                                                   Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                                   Text="{Binding Summary}"
+                                                   TextWrapping="Wrap" />
                                     </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </ui:Card>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ui:Card>
 
-                <ui:Card Grid.Column="1"
-                         Margin="20,0,0,0"
-                         Padding="20">
-                    <StackPanel>
-                        <TextBlock FontSize="22"
-                                   FontWeight="SemiBold"
-                                   Text="组件预览" />
-                        <WrapPanel Margin="0,16,0,0">
-                            <ui:Button Margin="0,0,12,12" Content="Primary Button" />
-                            <ui:Button Margin="0,0,12,12" Appearance="Secondary" Content="Secondary Button" />
-                            <ui:ToggleSwitch Margin="0,0,12,12" IsChecked="True" />
-                            <ui:TextBox Width="180" Margin="0,0,12,12" PlaceholderText="TextBox" />
-                            <ComboBox Width="160" Margin="0,0,12,12" SelectedIndex="0">
-                                <ComboBoxItem Content="Option A" />
-                                <ComboBoxItem Content="Option B" />
-                            </ComboBox>
-                            <Slider Width="180" Margin="0,0,12,12" Value="36" />
-                            <CheckBox Margin="0,0,12,12" Content="CheckBox" IsChecked="True" />
-                            <RadioButton Margin="0,0,12,12" Content="RadioButton" IsChecked="True" />
-                        </WrapPanel>
-                    </StackPanel>
-                </ui:Card>
-            </Grid>
-
-            <controls:InfoBannerControl Margin="0,24,0,0"
+            <controls:InfoBannerControl Margin="0,18,0,0"
                                         DataContext="{Binding InfoBanner}" />
         </StackPanel>
     </ScrollViewer>

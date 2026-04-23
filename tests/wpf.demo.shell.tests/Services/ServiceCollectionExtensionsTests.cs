@@ -107,7 +107,7 @@ public class ServiceCollectionExtensionsTests
 
             Assert.Contains(
                 navigationView.MenuItems.Cast<object>(),
-                item => item is System.Windows.Controls.TextBlock textBlock && textBlock.Text == "演示分组");
+                item => item is System.Windows.Controls.TextBlock textBlock && textBlock.Text == "业务场景");
 
             Assert.NotNull(navigationService.InitializedFrame);
             Assert.Same(window.FindName("PageHost"), navigationService.InitializedFrame);

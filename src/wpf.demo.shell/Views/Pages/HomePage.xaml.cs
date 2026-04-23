@@ -1,5 +1,6 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using WpfDemo.Models;
 using WpfDemo.ViewModels;
 using WpfDemo.Views.Controls;
@@ -9,8 +10,6 @@ namespace WpfDemo.Views.Pages;
 public partial class HomePage : Page
 {
     public Action<string>? QuickActionRequested { get; set; }
-
-    public Action<AppThemeOption>? ThemeRequested { get; set; }
 
     public HomePage(HomeViewModel viewModel)
     {
@@ -27,22 +26,24 @@ public partial class HomePage : Page
         }
     }
 
-    private void ThemeOptionCard_Loaded(object sender, RoutedEventArgs e)
-    {
-        if (sender is ThemeOptionCardControl card)
-        {
-            card.ThemeRequested -= HandleThemeRequested;
-            card.ThemeRequested += HandleThemeRequested;
-        }
-    }
-
     private void HandleQuickActionRequested(object? sender, string pageKey)
     {
         QuickActionRequested?.Invoke(pageKey);
     }
 
-    private void HandleThemeRequested(object? sender, AppThemeOption option)
+    private void HeroBrowseComponents_Click(object sender, RoutedEventArgs e)
     {
-        ThemeRequested?.Invoke(option);
+        QuickActionRequested?.Invoke(NavigationPageKeys.Buttons);
+    }
+
+    private void HeroScrollToUpdates_Click(object sender, RoutedEventArgs e)
+    {
+        if (RootScrollViewer.Content is not Visual content)
+        {
+            return;
+        }
+
+        Point offset = VersionUpdatesCard.TransformToAncestor(content).Transform(new Point(0, 0));
+        RootScrollViewer.ScrollToVerticalOffset(Math.Max(0, offset.Y - 12));
     }
 }

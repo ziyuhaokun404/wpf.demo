@@ -31,10 +31,10 @@ public class HomeViewModel
 
     public IReadOnlyList<QuickActionDefinition> QuickActions { get; } =
     [
-        new(SymbolRegular.CursorClick24, "按钮", "常用操作入口", NavigationPageKeys.Buttons),
-        new(SymbolRegular.Textbox24, "文本框", "输入与编辑", NavigationPageKeys.InputControls),
-        new(SymbolRegular.Table24, "数据表格", "展示与浏览", NavigationPageKeys.DataDisplay),
-        new(SymbolRegular.Alert24, "对话框", "交互反馈", NavigationPageKeys.Dialogs)
+        new(SymbolRegular.CursorClick24, "按钮与命令", "各类按钮、命令和交互组件", NavigationPageKeys.Buttons, "#2B74E4", "#182B74E4"),
+        new(SymbolRegular.Textbox24, "输入控件", "丰富的输入框、选择器等组件", NavigationPageKeys.InputControls, "#2F8C7A", "#1833917D"),
+        new(SymbolRegular.Grid24, "数据展示", "表格、列表、图表等数据组件", NavigationPageKeys.DataDisplay, "#8B4AE0", "#1B8B4AE0"),
+        new(SymbolRegular.LayoutCellFour24, "布局容器", "各种布局面板和容器组件", NavigationPageKeys.LayoutContainers, "#C26A1A", "#1AC26A1A")
     ];
 
     public IReadOnlyList<ThemeOptionDefinition> ThemeOptions { get; } =
@@ -46,9 +46,9 @@ public class HomeViewModel
 
     public IReadOnlyList<ReleaseNoteDefinition> ReleaseNotes { get; } =
     [
-        new("v0.3", "引入 dashboard 首页和扩展导航结构。", "2026-04-23", "SystemAccentColorPrimaryBrush"),
-        new("v0.2", "统一 TitleBar 与 NavigationView 外壳。", "2026-04-22", "SystemFillColorCautionBrush"),
-        new("v0.1", "初始化 Fluent 壳层与基础导航。", "2026-04-21", "SystemFillColorSuccessBrush")
+        new("v0.3", "引入 dashboard 首页和扩展导航结构", "2026-04-23", "#2B74E4"),
+        new("v0.2", "新增动画效果和主题系统", "2026-04-10", "#3F8B7A"),
+        new("v0.1", "项目初始化和基础组件", "2026-03-28", "#8B4AE0")
     ];
 
     public InfoBannerDefinition InfoBanner { get; } =
