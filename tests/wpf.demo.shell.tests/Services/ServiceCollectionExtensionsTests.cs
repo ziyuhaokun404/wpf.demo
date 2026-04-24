@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
-using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using WpfDemo.Contracts.Services;
