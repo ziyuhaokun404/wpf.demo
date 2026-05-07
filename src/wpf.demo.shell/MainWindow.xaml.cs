@@ -2,12 +2,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
 using WpfDemo.Contracts.Services;
 using WpfDemo.Models;
 using WpfDemo.ViewModels;
 using WpfDemo.Views.Pages;
-using Wpf.Ui.Appearance;
-using Wpf.Ui.Controls;
 
 namespace WpfDemo;
 

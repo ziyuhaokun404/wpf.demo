@@ -1,5 +1,5 @@
-using WpfDemo.Models;
 using Wpf.Ui.Controls;
+using WpfDemo.Models;
 
 namespace WpfDemo.ViewModels;
 

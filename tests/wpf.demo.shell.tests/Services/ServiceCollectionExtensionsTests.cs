@@ -3,14 +3,14 @@ using System.Reflection;
 using System.Runtime.ExceptionServices;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
 using WpfDemo.Contracts.Services;
 using WpfDemo.Extensions;
 using WpfDemo.Models;
 using WpfDemo.Services;
 using WpfDemo.ViewModels;
 using WpfDemo.Views.Pages;
-using Wpf.Ui.Appearance;
-using Wpf.Ui.Controls;
 using Xunit;
 
 namespace WpfDemo.Tests.Services;

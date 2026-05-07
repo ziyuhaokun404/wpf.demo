@@ -1,7 +1,7 @@
+using Wpf.Ui.Controls;
 using WpfDemo.Contracts.Services;
 using WpfDemo.Models;
 using WpfDemo.Models.Home;
-using Wpf.Ui.Controls;
 
 namespace WpfDemo.ViewModels;
 
